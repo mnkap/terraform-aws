@@ -8,12 +8,8 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "public" {
-<<<<<<< HEAD
-  count      = length(var.public_cidr)
-=======
   count = length(var.public_cidr)
 
->>>>>>> 74928f0bb4d9dcd24c37af40a5ab85d1e97ac9e8
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_cidr[count.index]
 
@@ -23,12 +19,8 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-<<<<<<< HEAD
-  count      = length(var.private_cidr)
-=======
   count = length(var.private_cidr)
 
->>>>>>> 74928f0bb4d9dcd24c37af40a5ab85d1e97ac9e8
   vpc_id     = aws_vpc.main.id
   cidr_block = var.private_cidr[count.index]
 
@@ -81,12 +73,8 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table" "private" {
-<<<<<<< HEAD
-  count  = length(var.private_cidr)
-=======
   count = length(var.private_cidr)
 
->>>>>>> 74928f0bb4d9dcd24c37af40a5ab85d1e97ac9e8
   vpc_id = aws_vpc.main.id
 
   route {
