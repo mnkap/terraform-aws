@@ -5,12 +5,7 @@ resource "aws_instance" "public" {
   key_name                    = "Main"
   vpc_security_group_ids      = [aws_security_group.public.id]
   subnet_id                   = aws_subnet.public[1].id
-  user_data                   = <<EOF
-  yum update -y
-  yum install -y httpd
-  systemctl start httpd && systemctl enable httpd
-  EOF
-
+  
   tags = {
     Name = "${var.env_code}-public"
   }
