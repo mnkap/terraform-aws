@@ -21,7 +21,7 @@ resource "aws_security_group" "public" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["87.255.216.85/32"]
+    cidr_blocks = ["185.48.148.185/32"]
   }
 
   egress {
@@ -41,7 +41,7 @@ resource "aws_instance" "private" {
   instance_type          = "t3.micro"
   key_name               = "Main"
   vpc_security_group_ids = [aws_security_group.private.id]
-  subnet_id              = aws_subnet.private[0].id
+  subnet_id              = aws_subnet.private[1].id
 
   tags = {
     Name = "${var.env_code}-private"
