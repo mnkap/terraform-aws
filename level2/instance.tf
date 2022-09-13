@@ -1,3 +1,4 @@
+#Add resources
 resource "aws_instance" "public" {
   ami                         = data.aws_ami.amazonlinux.id
   instance_type               = "t3.micro"
