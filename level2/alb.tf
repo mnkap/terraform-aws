@@ -21,7 +21,6 @@ resource "aws_security_group" "load_balancer" {
   tags = {
     Name = "${var.env_code}-load_balancer"
   }
-
 }
 
 resource "aws_lb" "main" {
@@ -52,9 +51,7 @@ resource "aws_lb_target_group" "main" {
     interval            = 30
     matcher             = 200
   }
-
 }
-
 
 resource "aws_lb_target_group_attachment" "main" {
   target_group_arn = aws_lb_target_group.main.arn
