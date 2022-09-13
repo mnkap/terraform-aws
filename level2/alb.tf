@@ -17,6 +17,7 @@ resource "aws_security_group" "load_balancer" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   tags = {
     Name = "${var.env_code}-load_balancer"
   }
@@ -29,8 +30,6 @@ resource "aws_lb" "main" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.load_balancer.id]
   subnets            = data.terraform_remote_state.level1.outputs.public_subnet_id
-
-
 
   tags = {
     Name = var.env_code

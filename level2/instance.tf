@@ -6,8 +6,6 @@ resource "aws_instance" "public" {
   vpc_security_group_ids      = [aws_security_group.public.id]
   subnet_id                   = data.terraform_remote_state.level1.outputs.public_subnet_id[0]
 
-
-
   tags = {
     Name = "${var.env_code}-public"
   }
