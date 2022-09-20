@@ -30,7 +30,6 @@ resource "aws_lb" "main" {
   security_groups    = [aws_security_group.load_balancer.id]
   subnets            = data.terraform_remote_state.level1.outputs.public_subnet_id
 
-
   tags = {
     Name = var.env_code
   }

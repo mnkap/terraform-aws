@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "main" {
 
   target_group_arns    = [aws_lb_target_group.main.arn]
   launch_configuration = aws_launch_configuration.main.name
-  vpc_zone_identifier  = data.terraform_remote_state.level1.outputs.private_subnet_id
+  vpc_zone_identifier  = ["${data.terraform_remote_state.level1.outputs.private_subnet_id[0]}"]
 
   tag {
     key                 = "Name"

@@ -9,11 +9,11 @@ resource "aws_vpc" "main" {
 
 data "aws_availability_zones" "available" {
   state = "available"
-
 }
 
 resource "aws_subnet" "public" {
-  availability_zone = data.aws_availability_zones.available.names[0]
+
+  availability_zone = data.aws_availability_zones.available.names[count.index]
   count             = length(var.public_cidr)
 
   vpc_id     = aws_vpc.main.id
@@ -25,7 +25,8 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  availability_zone = data.aws_availability_zones.available.names[1]
+
+  availability_zone = data.aws_availability_zones.available.names[count.index]
   count             = length(var.private_cidr)
 
   vpc_id     = aws_vpc.main.id
