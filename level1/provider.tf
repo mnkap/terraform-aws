@@ -18,3 +18,28 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
+
+resource "aws_iam_role" "role" {
+  name = "s3fullaccess-role"
+
+resource "aws_iam_policy" "policy" {
+  name        = "test-policy"
+  description = "A test policy"
+
+  policy =  <<EOF 
+ {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Action": [
+          "s3:*",
+          "s3-object-lambda:*"
+          ],
+        "Resource": "*"
+      }
+  ]
+}
+EOF
+
+}
