@@ -21,25 +21,15 @@ provider "aws" {
 
 resource "aws_iam_role" "role" {
   name = "s3fullaccess-role"
-
-resource "aws_iam_policy" "policy" {
-  name        = "test-policy"
-  description = "A test policy"
-
-  policy =  <<EOF 
- {
+  assume_role_policy =  jsonencode({
     "Version": "2012-10-17",
     "Statement": [
         {
         "Effect": "Allow",
-        "Action": [
-          "s3:*",
-          "s3-object-lambda:*"
-          ],
+        "Action": ["s3:*", "s3-object-lambda:*"],
         "Resource": "*"
       }
   ]
-}
-EOF
+ })  
 
 }
