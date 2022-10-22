@@ -10,9 +10,15 @@ resource "aws_db_instance" "default" {
   storage_type         = "standard"
   username             = "dbadmin"
   password             = local.rds_password
+  db_subnet_group_name   = aws_db_subnet_group.main.name
+  vpc_security_group_ids = [aws_security_group.rds.id]
 }
 
-resource "aws_db_instance_automated_backups_replication" "default" {
-  source_db_instance_arn = aws_db_instance.default.db_name
-  retention_period       = 14
+resource "aws_db_subnet_group" "main" {
+  name       = "main"
+  subnet_ids = var.private_subnet_id
+
+  tags = {
+    Name = "Education"
+  }
 }
