@@ -9,7 +9,7 @@ resource "aws_db_instance" "default" {
   multi_az             = false
   storage_type         = "standard"
   username             = "dbadmin"
-  password             = local.rds_password
+  password             =  local.rdspassword
   db_subnet_group_name   = aws_db_subnet_group.main.name
   vpc_security_group_ids = [aws_security_group.rds.id]
 }
