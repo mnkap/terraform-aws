@@ -1,11 +1,11 @@
-data "aws_secretsmanager_secret" "rds_password" {
+data "aws_secretsmanager_secret" "rdspassword" {
   name = "main/rds/password"
 }
 
-data "aws_secretsmanager_secret_version" "rds_password" {
-  secret_id = data.aws_secretsmanager_secret.rds_password.id
+data "aws_secretsmanager_secret_version" "rdspassword" {
+  secret_id = data.aws_secretsmanager_secret.rdspassword.id
 }
 
 locals {
-  rds_password = jsondecode(data.aws_secretsmanager_secret_version.rds_password.secret_string)["password"]
+  rdspassword = jsondecode(data.aws_secretsmanager_secret_version.rdspassword.secret_string)["password"]
 }
