@@ -2,6 +2,7 @@ variable "vpc_name" {
   description = "Name of VPC"
   type        = string
   default     = "example-vpc"
+
 }
 
 variable "vpc_cidr" {
@@ -32,4 +33,14 @@ variable "enable_nat_gateway" {
   description = "Enable NAT gateway for VPC"
   type        = bool
   default     = true
+}
+
+variable "vpc_id" {
+  default = "vpc_id"
+}
+
+variable "security_group_id" {
+  description = "Public subnets for VPC"
+  type        = list(string)
+  default = []
 }
