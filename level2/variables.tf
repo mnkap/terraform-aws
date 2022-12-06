@@ -23,7 +23,7 @@ variable "public_subnets" {
 }
 
 variable "private_subnets" {
-  default = []
+  default     = []
   description = "Private subnets for VPC"
   type        = list(string)
 }

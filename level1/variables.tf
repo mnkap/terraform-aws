@@ -42,5 +42,5 @@ variable "vpc_id" {
 variable "security_group_id" {
   description = "Public subnets for VPC"
   type        = list(string)
-  default = []
+  default     = []
 }
